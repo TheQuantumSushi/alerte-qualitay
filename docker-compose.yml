@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  alerte-qualitay:
+    build: .
+    container_name: alerte-qualitay
+    restart: unless-stopped
+    env_file:
+      - variables.env
+    volumes:
+      - ./config.yaml:/app/config.yaml
+      - ./cache.yaml:/app/cache.yaml
+    command: python qualitay.py
